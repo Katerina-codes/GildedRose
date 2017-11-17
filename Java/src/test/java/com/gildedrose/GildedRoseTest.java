@@ -8,8 +8,7 @@ public class GildedRoseTest {
 
     @Test
     public void foo() {
-        Item[] items = new Item[] { new Item("foo", 0, 0) };
-        GildedRose app = new GildedRose(items);
+        GildedRose app = getGildedRose("foo", 0, 0);
 
         app.updateQuality();
 
@@ -18,8 +17,7 @@ public class GildedRoseTest {
 
     @Test
     public void forNormalProductAtEndOfDaySellinAndQualityOfItemAreLowered() {
-        Item[] items = new Item[] { new Item("cake", 1, 1) };
-        GildedRose app = new GildedRose(items);
+        GildedRose app = getGildedRose("cake", 1, 1);
 
         app.updateQuality();
 
@@ -29,8 +27,7 @@ public class GildedRoseTest {
 
     @Test
     public void whenSellInDateHasPassedQualityDegradesTwiceAsFast() {
-        Item[] items = new Item[] { new Item("cake", 0, 2) };
-        GildedRose app = new GildedRose(items);
+        GildedRose app = getGildedRose("cake", 0, 2);
 
         app.updateQuality();
 
@@ -39,8 +36,7 @@ public class GildedRoseTest {
 
     @Test
     public void theQualityOfAnItemIsNeverNegative() {
-        Item[] items = new Item[] { new Item("cake", 1, 0) };
-        GildedRose app = new GildedRose(items);
+        GildedRose app = getGildedRose("cake", 1, 0);
 
         app.updateQuality();
 
@@ -49,18 +45,24 @@ public class GildedRoseTest {
 
     @Test
     public void theQualityOfAnItemIsNeverNegativeEvenAfterSellByDate() {
-        Item[] items = new Item[] { new Item("cake", 0, 0) };
-        GildedRose app = new GildedRose(items);
+        String name = "cake";
+        int sellIn = 0;
+        int quality = 0;
+        GildedRose app = getGildedRose(name, sellIn, quality);
 
         app.updateQuality();
 
         assertEquals(0, app.items[0].quality);
     }
 
+    private GildedRose getGildedRose(String name, int sellIn, int quality) {
+        Item[] items = new Item[] { new Item(name, sellIn, quality) };
+        return new GildedRose(items);
+    }
+
     @Test
     public void agedBrieIncreasesInQualityWithAge() {
-        Item[] items = new Item[] { new Item("Aged Brie", 1, 0) };
-        GildedRose app = new GildedRose(items);
+        GildedRose app = getGildedRose("Aged Brie", 1, 0);
 
         app.updateQuality();
 
@@ -69,8 +71,7 @@ public class GildedRoseTest {
 
     @Test
     public void agedBrieIncreasesInQualityTwiceWhenSellByDateHasPassed() {
-        Item[] items = new Item[] { new Item("Aged Brie", 0, 0) };
-        GildedRose app = new GildedRose(items);
+        GildedRose app = getGildedRose("Aged Brie", 0, 0);
 
         app.updateQuality();
 
