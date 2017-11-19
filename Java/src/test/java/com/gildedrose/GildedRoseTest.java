@@ -106,4 +106,13 @@ public class GildedRoseTest {
 
         assertEquals(3, app.items[0].quality);
     }
+
+    @Test
+    public void backstagePassesIncreasesByThreeIfSellInIsBetweenFiveAndOneDay() {
+        GildedRose app = getGildedRose("Backstage passes to a TAFKAL80ETC concert", 5, 1);
+
+        app.updateQuality();
+
+        assertEquals(4, app.items[0].quality);
+    }
 }
