@@ -85,6 +85,7 @@ public class GildedRoseTest {
         app.updateQuality();
 
         assertEquals(50, app.items[0].quality);
+        assertEquals(0, app.items[0].sellIn);
     }
 
 }
