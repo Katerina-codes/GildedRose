@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import static com.gildedrose.GildedRose.AGED_BRIE;
+import static com.gildedrose.GildedRose.BACKSTAGE_PASSES;
+import static com.gildedrose.GildedRose.SULFURAS;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -62,7 +65,7 @@ public class GildedRoseTest {
 
     @Test
     public void agedBrieIncreasesInQualityWithAge() {
-        GildedRose app = getGildedRose("Aged Brie", 1, 0);
+        GildedRose app = getGildedRose(AGED_BRIE, 1, 0);
 
         app.updateQuality();
 
@@ -71,7 +74,7 @@ public class GildedRoseTest {
 
     @Test
     public void agedBrieIncreasesInQualityTwiceWhenSellByDateHasPassed() {
-        GildedRose app = getGildedRose("Aged Brie", 0, 0);
+        GildedRose app = getGildedRose(AGED_BRIE, 0, 0);
 
         app.updateQuality();
 
@@ -80,7 +83,7 @@ public class GildedRoseTest {
 
     @Test
     public void qualityOfAnItemIsNeverMoreThan50() {
-        GildedRose app = getGildedRose("Aged Brie", 1, 50);
+        GildedRose app = getGildedRose(AGED_BRIE, 1, 50);
 
         app.updateQuality();
 
@@ -90,7 +93,7 @@ public class GildedRoseTest {
 
     @Test
     public void sulfurasNeverHasToBeSoldAndNeverDecreasesInQuality() {
-        GildedRose app = getGildedRose("Sulfuras, Hand of Ragnaros", 0, 1);
+        GildedRose app = getGildedRose(SULFURAS, 0, 1);
 
         app.updateQuality();
 
@@ -100,7 +103,7 @@ public class GildedRoseTest {
 
     @Test
     public void backstagePassesIncreasesByTwoIfSellInIsBetweenTenAndSixDays() {
-        GildedRose app = getGildedRose("Backstage passes to a TAFKAL80ETC concert", 10, 1);
+        GildedRose app = getGildedRose(BACKSTAGE_PASSES, 10, 1);
 
         app.updateQuality();
 
@@ -109,7 +112,7 @@ public class GildedRoseTest {
 
     @Test
     public void backstagePassesIncreasesByThreeIfSellInIsBetweenFiveAndOneDay() {
-        GildedRose app = getGildedRose("Backstage passes to a TAFKAL80ETC concert", 5, 1);
+        GildedRose app = getGildedRose(BACKSTAGE_PASSES, 5, 1);
 
         app.updateQuality();
 
@@ -118,11 +121,10 @@ public class GildedRoseTest {
 
     @Test
     public void qualityDropsToZeroAfterConcert() {
-        GildedRose app = getGildedRose("Backstage passes to a TAFKAL80ETC concert", 0, 0);
+        GildedRose app = getGildedRose(BACKSTAGE_PASSES, 0, 0);
 
         app.updateQuality();
 
         assertEquals(0, app.items[0].quality);
-
     }
 }
