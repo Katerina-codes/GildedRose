@@ -88,4 +88,14 @@ public class GildedRoseTest {
         assertEquals(0, app.items[0].sellIn);
     }
 
+    @Test
+    public void sulfurasNeverHastoBeSoldandNeverDecreasesInQuality() throws Exception {
+        GildedRose app = getGildedRose("Sulfuras, Hand of Ragnaros", 0, 1);
+
+        app.updateQuality();
+
+        assertEquals(1, app.items[0].quality);
+        assertEquals(0, app.items[0].sellIn);
+
+    }
 }
