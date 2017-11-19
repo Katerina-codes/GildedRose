@@ -115,4 +115,14 @@ public class GildedRoseTest {
 
         assertEquals(4, app.items[0].quality);
     }
+
+    @Test
+    public void qualityDropsToZeroAfterConcert() {
+        GildedRose app = getGildedRose("Backstage passes to a TAFKAL80ETC concert", 0, 0);
+
+        app.updateQuality();
+
+        assertEquals(0, app.items[0].quality);
+
+    }
 }
