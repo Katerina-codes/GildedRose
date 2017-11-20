@@ -52,7 +52,7 @@ class GildedRose {
                             }
                         }
                     } else {
-                        items[i].quality = items[i].quality - items[i].quality;
+                        qualityEqualsZero(items[i]);
                     }
                 } else {
                     if (qualityIsLessThanFifty(items[i])) {
@@ -61,6 +61,10 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private void qualityEqualsZero(Item item) {
+        item.quality = item.quality - item.quality;
     }
 
     private void qualityMinusOne(Item item) {
