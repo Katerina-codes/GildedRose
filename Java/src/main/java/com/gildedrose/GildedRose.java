@@ -8,7 +8,7 @@ class GildedRose {
 
     public GildedRose(Item[] items) {
         this.items = items;
-    }
+}
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
@@ -16,7 +16,7 @@ class GildedRose {
                     && !items[i].name.equals(BACKSTAGE_PASSES)) {
                 if (isQualityGreaterThanZero(items[i])) {
                     if (!items[i].name.equals(SULFURAS)) {
-                        items[i].quality = items[i].quality - 1;
+                        qualityMinusOne(items[i]);
                     }
                 }
             } else {
@@ -48,7 +48,7 @@ class GildedRose {
                     if (!items[i].name.equals(BACKSTAGE_PASSES)) {
                         if (isQualityGreaterThanZero(items[i])) {
                             if (!items[i].name.equals(SULFURAS)) {
-                                items[i].quality = items[i].quality - 1;
+                                qualityMinusOne(items[i]);
                             }
                         }
                     } else {
@@ -61,6 +61,10 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private void qualityMinusOne(Item item) {
+        item.quality = item.quality - 1;
     }
 
     private void qualityPlusOne(Item item) {
