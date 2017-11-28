@@ -24,13 +24,13 @@ class GildedRose {
                     qualityPlusOne(items[i]);
 
                     if (items[i].name.equals(BACKSTAGE_PASSES)) {
-                        if (items[i].sellIn < 11) {
+                        if (isSellByDateIsLessThan(11, items[i])) {
                             if (qualityIsLessThanFifty(items[i])) {
                                 qualityPlusOne(items[i]);
                             }
                         }
 
-                        if (items[i].sellIn < 6) {
+                        if (isSellByDateIsLessThan(6, items[i])) {
                             if (qualityIsLessThanFifty(items[i])) {
                                 qualityPlusOne(items[i]);
                             }
@@ -43,7 +43,7 @@ class GildedRose {
                 items[i].sellIn = items[i].sellIn - 1;
             }
 
-            if (items[i].sellIn < 0) {
+            if (isSellByDateIsLessThan(0, items[i])) {
                 if (!items[i].name.equals(AGED_BRIE)) {
                     if (!items[i].name.equals(BACKSTAGE_PASSES)) {
                         if (isQualityGreaterThanZero(items[i])) {
@@ -61,6 +61,10 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private boolean isSellByDateIsLessThan(int numberOfDays, Item item) {
+        return item.sellIn < numberOfDays;
     }
 
     private void qualityEqualsZero(Item item) {
