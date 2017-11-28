@@ -12,10 +12,10 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            if (!items[i].name.equals(AGED_BRIE)
-                    && !items[i].name.equals(BACKSTAGE_PASSES)) {
+            if (!itemTypeIs(AGED_BRIE, items[i])
+                    && !itemTypeIs(BACKSTAGE_PASSES, items[i])) {
                 if (isQualityGreaterThanZero(items[i])) {
-                    if (!items[i].name.equals(SULFURAS)) {
+                    if (!itemTypeIs(SULFURAS, items[i])) {
                         qualityMinusOne(items[i]);
                     }
                 }
@@ -23,7 +23,7 @@ class GildedRose {
                 if (qualityIsLessThanFifty(items[i])) {
                     qualityPlusOne(items[i]);
 
-                    if (items[i].name.equals(BACKSTAGE_PASSES)) {
+                    if (itemTypeIs(BACKSTAGE_PASSES, items[i])) {
                         if (isSellByDateIsLessThan(11, items[i])) {
                             if (qualityIsLessThanFifty(items[i])) {
                                 qualityPlusOne(items[i]);
@@ -39,15 +39,15 @@ class GildedRose {
                 }
             }
 
-            if (!items[i].name.equals(SULFURAS)) {
+            if (!itemTypeIs(SULFURAS, items[i])) {
                 items[i].sellIn = items[i].sellIn - 1;
             }
 
             if (isSellByDateIsLessThan(0, items[i])) {
-                if (!items[i].name.equals(AGED_BRIE)) {
-                    if (!items[i].name.equals(BACKSTAGE_PASSES)) {
+                if (!itemTypeIs(AGED_BRIE, items[i])) {
+                    if (!itemTypeIs(BACKSTAGE_PASSES, items[i])) {
                         if (isQualityGreaterThanZero(items[i])) {
-                            if (!items[i].name.equals(SULFURAS)) {
+                            if (!itemTypeIs(SULFURAS, items[i])) {
                                 qualityMinusOne(items[i]);
                             }
                         }
@@ -61,6 +61,10 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private boolean itemTypeIs(String itemType, Item item) {
+        return item.name.equals(itemType);
     }
 
     private boolean isSellByDateIsLessThan(int numberOfDays, Item item) {
