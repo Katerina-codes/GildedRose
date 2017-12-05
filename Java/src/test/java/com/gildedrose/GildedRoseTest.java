@@ -41,11 +41,20 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void qualityOfAnItemIsNeverOverFifty() {
+    public void qualityOfAgedBrieIsNeverOverFifty() {
         Item[] items = new Item[] { new Item("Aged Brie", 1, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
         assertEquals(0, app.items[0].sellIn);
+    }
+
+    @Test
+    public void qualityOfAnBackstagePassesIsNeverOverFifty() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 11, 50) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+        assertEquals(10, app.items[0].sellIn);
     }
 }
