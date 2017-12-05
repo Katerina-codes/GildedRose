@@ -75,4 +75,13 @@ public class GildedRoseTest {
         assertEquals(3, app.items[0].quality);
         assertEquals(9, app.items[0].sellIn);
     }
+
+    @Test
+    public void backstagePassesQualityIncreasesByThreeFiveOrLessDaysBeforeEvent() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 4) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(7, app.items[0].quality);
+        assertEquals(4, app.items[0].sellIn);
+    }
 }
