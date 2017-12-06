@@ -59,7 +59,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void sulfurasNeverDecresesInQualityOrHasToBeSold() {
+    public void sulfurasNeverDecreasesInQualityOrHasToBeSold() {
         Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 0, 10) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -68,7 +68,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void backstagePassesQualityIncreasesByTwoDaysBeforeEvent() {
+    public void backstagePassesQualityIncreasesByTwoTenDaysBeforeEvent() {
         Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 1) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
