@@ -1,5 +1,8 @@
 package com.gildedrose;
 
+import static com.gildedrose.GildedRose.AGED_BRIE;
+import static com.gildedrose.GildedRose.BACKSTAGE_PASSES;
+import static com.gildedrose.GildedRose.SULFURAS;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -33,7 +36,7 @@ public class GildedRoseTest {
 
     @Test
     public void qualityOfAgedBrieIncreasesAsItGetsOlder() {
-        Item[] items = new Item[] { new Item("Aged Brie", 2, 1) };
+        Item[] items = new Item[] { new Item(AGED_BRIE, 2, 1) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(2, app.items[0].quality);
@@ -42,7 +45,7 @@ public class GildedRoseTest {
 
     @Test
     public void qualityOfAgedBrieIsNeverOverFifty() {
-        Item[] items = new Item[] { new Item("Aged Brie", 1, 50) };
+        Item[] items = new Item[] { new Item(AGED_BRIE, 1, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
@@ -51,7 +54,7 @@ public class GildedRoseTest {
 
     @Test
     public void qualityOfAnBackstagePassesIsNeverOverFifty() {
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 11, 50) };
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 11, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
@@ -60,7 +63,7 @@ public class GildedRoseTest {
 
     @Test
     public void sulfurasNeverDecreasesInQualityOrHasToBeSold() {
-        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 0, 10) };
+        Item[] items = new Item[] { new Item(SULFURAS, 0, 10) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(10, app.items[0].quality);
@@ -69,7 +72,7 @@ public class GildedRoseTest {
 
     @Test
     public void backstagePassesQualityIncreasesByTwoTenDaysBeforeEvent() {
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 1) };
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 10, 1) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(3, app.items[0].quality);
@@ -78,7 +81,7 @@ public class GildedRoseTest {
 
     @Test
     public void backstagePassesQualityIncreasesByThreeFiveOrLessDaysBeforeEvent() {
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 4) };
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 5, 4) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(7, app.items[0].quality);
@@ -87,7 +90,7 @@ public class GildedRoseTest {
 
     @Test
     public void backstagePassesQualityDropsToZeroAfterEvent() {
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 0, 10) };
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES, 0, 10) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
