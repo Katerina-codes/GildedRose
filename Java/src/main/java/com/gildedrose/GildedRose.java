@@ -24,15 +24,12 @@ class GildedRose {
                 } else {
                     getItemQualityForOtherItem(item);
                 }
-
                 item.sellIn = item.sellIn - 1;
             }
 
             if (item.sellIn < 0) {
                 if (item.name.equals(AGED_BRIE)) {
-                    if (item.quality < 50) {
-                        addOneToItemQuality(item);
-                    }
+                    getItemQualityForAgedBrie(item);
                 } else {
                     if (item.name.equals(BACKSTAGE_PASSES)) {
                         item.quality = 0;
