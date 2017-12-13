@@ -85,9 +85,9 @@ public class GildedRoseTest {
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
     }
-
-    private GildedRose itemSetUp(String cake, int sellIn, int quality) {
-        Item[] items = new Item[] { new Item(cake, sellIn, quality) };
+    
+    private GildedRose itemSetUp(String item, int sellIn, int quality) {
+        Item[] items = new Item[] { new Item(item, sellIn, quality) };
         return new GildedRose(items);
     }
 }
