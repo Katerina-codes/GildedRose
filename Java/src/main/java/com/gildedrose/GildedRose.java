@@ -27,7 +27,7 @@ class GildedRose {
                 item.sellIn = item.sellIn - 1;
             }
 
-            if (item.sellIn < 0) {
+            if (daysLeftToSellItemIsLessThan(item, 0)) {
                 if (item.name.equals(AGED_BRIE)) {
                     getItemQualityForAgedBrie(item);
                 } else {
@@ -39,6 +39,10 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private boolean daysLeftToSellItemIsLessThan(Item item, int days) {
+        return item.sellIn < days;
     }
 
     private void getItemQualityForOtherItem(Item item) {
@@ -57,11 +61,11 @@ class GildedRose {
         if (itemQualityIsLessThanFifty(item)) {
             addOneToItemQuality(item);
 
-            if (item.sellIn < 11 && itemQualityIsLessThanFifty(item)) {
+            if (daysLeftToSellItemIsLessThan(item, 11) && itemQualityIsLessThanFifty(item)) {
                 addOneToItemQuality(item);
             }
 
-            if (item.sellIn < 6 && itemQualityIsLessThanFifty(item)) {
+            if (daysLeftToSellItemIsLessThan(item, 6) && itemQualityIsLessThanFifty(item)) {
                 addOneToItemQuality(item);
             }
         }
