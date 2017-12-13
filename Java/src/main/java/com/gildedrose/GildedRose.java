@@ -14,6 +14,8 @@ class GildedRose {
         for (Item item : items) {
             if (item.name.equals(SULFURAS)) {
 
+            } else if (item.name.equals("Conjured")) {
+                item.quality -= 2;
             } else {
                 if (item.name.equals(BACKSTAGE_PASSES)) {
                     getItemQualityForBackStagePasses(item);

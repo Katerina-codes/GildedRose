@@ -85,7 +85,14 @@ public class GildedRoseTest {
         app.updateQuality();
         assertEquals(0, app.items[0].quality);
     }
-    
+
+    @Test
+    public void conjuredItemsDegradeTwiceAsFastAsNormalItems() {
+        GildedRose app = itemSetUp("Conjured", 1, 2);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+    }
+
     private GildedRose itemSetUp(String item, int sellIn, int quality) {
         Item[] items = new Item[] { new Item(item, sellIn, quality) };
         return new GildedRose(items);
