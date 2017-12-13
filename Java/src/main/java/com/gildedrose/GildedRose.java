@@ -22,9 +22,7 @@ class GildedRose {
                 } else if (item.name.equals(AGED_BRIE)) {
                     getItemQualityForAgedBrie(item);
                 } else {
-                    if (item.quality > 0) {
-                        subtractOneFromItemQuality(item);
-                    }
+                    getItemQualityForOtherItem(item);
                 }
 
                 item.sellIn = item.sellIn - 1;
@@ -39,12 +37,16 @@ class GildedRose {
                     if (item.name.equals(BACKSTAGE_PASSES)) {
                         item.quality = 0;
                     } else {
-                        if (item.quality > 0) {
-                            subtractOneFromItemQuality(item);
-                        }
+                        getItemQualityForOtherItem(item);
                     }
                 }
             }
+        }
+    }
+
+    private void getItemQualityForOtherItem(Item item) {
+        if (item.quality > 0) {
+            subtractOneFromItemQuality(item);
         }
     }
 
