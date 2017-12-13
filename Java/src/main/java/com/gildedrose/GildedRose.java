@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import java.util.Objects;
+
 class GildedRose {
     public static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
     public static final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
@@ -12,14 +14,14 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (item.name.equals(SULFURAS)) {
+            if (Objects.equals(item.name, SULFURAS)) {
 
-            } else if (item.name.equals("Conjured")) {
+            } else if (Objects.equals(item.name, "Conjured")) {
                 item.quality -= 2;
             } else {
-                if (item.name.equals(BACKSTAGE_PASSES)) {
+                if (Objects.equals(item.name, BACKSTAGE_PASSES)) {
                     getItemQualityForBackStagePasses(item);
-                } else if (item.name.equals(AGED_BRIE)) {
+                } else if (Objects.equals(item.name, AGED_BRIE)) {
                     getItemQualityForAgedBrie(item);
                 } else {
                     getItemQualityForOtherItem(item);
@@ -28,10 +30,10 @@ class GildedRose {
             }
 
             if (daysLeftToSellItemIsLessThan(item, 0)) {
-                if (item.name.equals(AGED_BRIE)) {
+                if (Objects.equals(item.name, AGED_BRIE)) {
                     getItemQualityForAgedBrie(item);
                 } else {
-                    if (item.name.equals(BACKSTAGE_PASSES)) {
+                    if (Objects.equals(item.name, BACKSTAGE_PASSES)) {
                         item.quality = 0;
                     } else {
                         getItemQualityForOtherItem(item);
