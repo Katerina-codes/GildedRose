@@ -48,23 +48,27 @@ class GildedRose {
     }
 
     private void getItemQualityForAgedBrie(Item item) {
-        if (item.quality < 50) {
+        if (itemQualityIsLessThanFifty(item)) {
             addOneToItemQuality(item);
         }
     }
 
     private void getItemQualityForBackStagePasses(Item item) {
-        if (item.quality < 50) {
+        if (itemQualityIsLessThanFifty(item)) {
             addOneToItemQuality(item);
 
-            if (item.sellIn < 11 && item.quality < 50) {
+            if (item.sellIn < 11 && itemQualityIsLessThanFifty(item)) {
                 addOneToItemQuality(item);
             }
 
-            if (item.sellIn < 6 && item.quality < 50) {
+            if (item.sellIn < 6 && itemQualityIsLessThanFifty(item)) {
                 addOneToItemQuality(item);
             }
         }
+    }
+
+    private boolean itemQualityIsLessThanFifty(Item item) {
+        return item.quality < 50;
     }
 
     private void subtractOneFromItemQuality(Item item) {
