@@ -20,9 +20,7 @@ class GildedRose {
                 if (item.name.equals(BACKSTAGE_PASSES)) {
                     getItemQualityForBackStagePasses(item);
                 } else if (item.name.equals(AGED_BRIE)) {
-                    if (item.quality < 50) {
-                        addOneToItemQuality(item);
-                    }
+                    getItemQualityForAgedBrie(item);
                 } else {
                     if (item.quality > 0) {
                         subtractOneFromItemQuality(item);
@@ -47,6 +45,12 @@ class GildedRose {
                     }
                 }
             }
+        }
+    }
+
+    private void getItemQualityForAgedBrie(Item item) {
+        if (item.quality < 50) {
+            addOneToItemQuality(item);
         }
     }
 
